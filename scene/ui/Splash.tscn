@@ -1,8 +1,41 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://script/ui/Splash.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ShowSplash"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SplashTextContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 3.5, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "open_menu"
+} ]
+}
 
 [node name="Splash" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -15,29 +48,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="SplashTextContainer" type="CenterContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="SplahTextAlign" type="VBoxContainer" parent="SplashTextContainer"]
 margin_left = 469.0
 margin_top = 275.0
 margin_right = 554.0
 margin_bottom = 324.0
 
-[node name="GameTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="GameTitle" type="Label" parent="SplashTextContainer/SplahTextAlign"]
 margin_right = 85.0
 margin_bottom = 31.0
 text = "Car simulator
 by"
 align = 1
 
-[node name="Developer" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Developer" type="Label" parent="SplashTextContainer/SplahTextAlign"]
 margin_top = 35.0
 margin_right = 85.0
 margin_bottom = 49.0
 text = "Naol"
 align = 1
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+autoplay = "ShowSplash"
+anims/ShowSplash = SubResource( 1 )
