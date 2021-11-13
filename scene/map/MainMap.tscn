@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://script/map/MainMap.gd" type="Script" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 10, 10 )
+
+[node name="MainMap" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MapObject" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.970431, 0.24138, 0, -0.24138, 0.970431, 0, 3.5086, 8.83542 )
